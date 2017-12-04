@@ -3,51 +3,46 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.TreeMap;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author Ketan Mehta
- * @date 30-Nov-2017
- * @problem_link https://www.codechef.com/problems/ANKTRAIN
+ * @date 01-Dec-2017
+ * @problem_link https://www.codechef.com/problems/SIMDISH
  */
-class ANKTRAIN {
-	static TreeMap<Integer, String> seatMap = new TreeMap<Integer, String>(); 
+class SIMDISH {
+
 	public static void main(String args[]) throws Exception {
-		InputReader in = new InputReader(System.in);
-		PrintWriter w = new PrintWriter(System.out);
-		solve();
-		int t = in.nextInt();
+		Scanner sc = new Scanner(System.in);
+		int t = Integer.parseInt(sc.nextLine());
 		for (int i = 0; i < t; i++) {
-			System.out.println(seatMap.get(in.nextInt()));
-		}
-		w.close();
-	}
-	
-	static void solve() {
-		String seatString[] = new String[]{"LB","MB","UB","LB","MB","UB","SL","SU"};
-		int count = 0;
-		for(int i=1; i<=500; i++) {
-			if(i%8 == 0) {
-				count = 0;
-	//			System.out.println("Changing seat " + i + " and " + (i - 1));
-				seatMap.put(i, (i-1) + seatString[  (i-2) % seatString.length]);
-				seatMap.put(i-1, (i) + seatString[  (i-1)  % seatString.length]);
+			List<String> fList = new ArrayList<String>();
+			List<String> sList = new ArrayList<String>();
+			fList.add(sc.next());
+			fList.add(sc.next());
+			fList.add(sc.next());
+			fList.add(sc.next());
+			
+			sList.add(sc.next());
+			sList.add(sc.next());
+			sList.add(sc.next());
+			sList.add(sc.next());
+			
+			int size = fList.size();
+			fList.removeAll(sList);
+			if(size / fList.size() >= 2) {
+				System.out.println("similar");
 			}
 			else {
-				if(count == 3) {
-					i = i + 3;
-					continue;
-				}
-//				System.out.println("Changing seat " + i + " and " + (i+3));
-				seatMap.put(i, (i+3) + seatString[  (i+2)  % seatString.length]);
-				seatMap.put((i+3), (i) + seatString[  (i-1)  % seatString.length]);
-				count++;
+				System.out.println("dissimilar");
 			}
 		}
-		//System.out.println(seatMap);
+		sc.close();
 	}
+
 	static class InputReader {
 		private InputStream stream;
 		private byte[] buf = new byte[1024];
