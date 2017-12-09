@@ -11,7 +11,7 @@ import java.util.TreeMap;
  * @author Ketan Mehta
  * @date 30-Nov-2017
  * @problem_link https://www.codechef.com/problems/ANKTRAIN
- */
+ */ 
 class ANKTRAIN {
 	static TreeMap<Integer, String> seatMap = new TreeMap<Integer, String>(); 
 	public static void main(String args[]) throws Exception {
